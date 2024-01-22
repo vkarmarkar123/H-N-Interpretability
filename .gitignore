@@ -1,0 +1,4 @@
+venv/
+*.csv
+box_plots_laguerre_coefficients.html
+lib/
