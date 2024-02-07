@@ -2,3 +2,9 @@ venv/
 *.csv
 box_plots_laguerre_coefficients.html
 lib/
+V4_Anatomic_DT_LG
+FB_Agnostic_DT_LG
+Decision_Tree_PNGs
+CSVs and Output Files
+etc
+share
