@@ -41,3 +41,11 @@ def bex(subset_df):
             processed_df = process_data(run_batch)
 
     return processed_df
+
+
+#Bex.py achieves a similar goal as Fast_BEX, but does it differently
+
+# - The iterating over 'Case' and 'Run' is similar, along with the separation of data
+#   based on 0s and 1s
+# - It calculates Euclidean distance using a nested loop and a custom function (compares every point labeled 0 with every point labeled a 1)
+# - if dist < 20, both points marked for removal

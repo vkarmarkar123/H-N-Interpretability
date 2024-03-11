@@ -61,7 +61,7 @@ subset_df['Label'] = subset_df['Label'].replace([5, 6, 7, 8, 9, 10, 11, 12, 13, 
 # Remove rows where 'Label' is not 0 or 1
 subset_df = subset_df[subset_df['Label'].isin([0, 1])]
 
-bex_df = optimized_bex(subset_df)
+bex_df = optimized_bex(subset_df) #excludes weak labels
 # bex_df = bex(subset_df)
 f = 1
 
@@ -76,32 +76,5 @@ TrainTest_Data = bex_df[selected_columns]
 
 
 # Here you can filter the data based on case number
+#focus on subdf
 
-# ----------------------------SHAP Analysis----------------------------
-
-
-# Open .pkl files
-def load_pickle_file():
-    root = tk.Tk()
-    root.withdraw()
-    file_path = filedialog.askopenfilename(filetypes=[("Pickle files", "*.pkl")])
-
-    if file_path:
-        with open(file_path, 'rb') as file:
-            data = pickle.load(file)
-        root.destroy()
-        return data
-    else:
-        print("No file selected.")
-        root.destroy()
-        return None
-
-
-data = load_pickle_file()
-xgb_model = data['model']
-dataset = subset_df
-
-# SHAP Explainer
-explainer = shap.TreeExplainer(xgb_model)
-shap_values = explainer.shap_values(dataset)
-shap.summary_plot(shap_values, dataset)

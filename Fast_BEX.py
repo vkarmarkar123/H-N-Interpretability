@@ -27,3 +27,13 @@ def optimized_bex(subset_df):
             processed_dfs.append(process_data(run_group))
 
     return pd.concat(processed_dfs, ignore_index=True)
+
+
+# optimized_bex() processes a dataframe by:
+
+# - grouping the data by 'Case' and within each 'Case' by 'Run'
+# - separates data into 2 subsets based on 'Label' value (0,1)
+# - Calculates pairwise Euclidean Distance between all points in the 2 subsets (using WLI_x_coord and WLI_y_coord)
+# - Identifies pairs of points (one from each label group) that are closer than 20 units apart
+# - removes said points
+# - concatenates all processed groups to a return DF
